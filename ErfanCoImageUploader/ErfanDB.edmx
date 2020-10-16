@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PTC_MIS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ProductPictures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ERPCode" Type="nvarchar" MaxLength="200" />
+          <Property Name="Picture" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PTC_MIS_DB.TOrder.Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="BrandERPCode" />
+            <PropertyRef Name="KArtNo" />
+            <PropertyRef Name="KBarCode" />
+            <PropertyRef Name="K_Name" />
+            <PropertyRef Name="K_price_sail" />
+            <PropertyRef Name="K_price_sail2" />
+            <PropertyRef Name="K_price_sail3" />
+            <PropertyRef Name="EndUserPrice" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="PcompanyID" />
+            <PropertyRef Name="PBarCodeID" />
+            <PropertyRef Name="Mojodi" />
+          </Key>
+          <Property Name="ERPCode" Type="varchar" MaxLength="92" />
+          <Property Name="BrandERPCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KArtNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KBarCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="K_Name" Type="varchar" MaxLength="356" Nullable="false" />
+          <Property Name="K_price_sail" Type="money" Nullable="false" />
+          <Property Name="K_price_sail2" Type="money" Nullable="false" />
+          <Property Name="K_price_sail3" Type="money" Nullable="false" />
+          <Property Name="EndUserPrice" Type="money" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="PcompanyID" Type="int" Nullable="false" />
+          <Property Name="PBarCodeID" Type="int" Nullable="false" />
+          <Property Name="vat" Type="float" />
+          <Property Name="Mojodi" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PTC_MIS_DBModelStoreContainer">
+          <EntitySet Name="ProductPictures" EntityType="Self.ProductPictures" Schema="TOrder" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" store:Type="Views" store:Schema="TOrder">
+            <DefiningQuery>SELECT 
+    [Products].[ERPCode] AS [ERPCode], 
+    [Products].[BrandERPCode] AS [BrandERPCode], 
+    [Products].[KArtNo] AS [KArtNo], 
+    [Products].[KBarCode] AS [KBarCode], 
+    [Products].[K_Name] AS [K_Name], 
+    [Products].[K_price_sail] AS [K_price_sail], 
+    [Products].[K_price_sail2] AS [K_price_sail2], 
+    [Products].[K_price_sail3] AS [K_price_sail3], 
+    [Products].[EndUserPrice] AS [EndUserPrice], 
+    [Products].[ProductID] AS [ProductID], 
+    [Products].[PcompanyID] AS [PcompanyID], 
+    [Products].[PBarCodeID] AS [PBarCodeID], 
+    [Products].[vat] AS [vat], 
+    [Products].[Mojodi] AS [Mojodi]
+    FROM [TOrder].[Products] AS [Products]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PTC_MIS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ProductPicture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ERPCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="BrandERPCode" />
+            <PropertyRef Name="KArtNo" />
+            <PropertyRef Name="KBarCode" />
+            <PropertyRef Name="K_Name" />
+            <PropertyRef Name="K_price_sail" />
+            <PropertyRef Name="K_price_sail2" />
+            <PropertyRef Name="K_price_sail3" />
+            <PropertyRef Name="EndUserPrice" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="PcompanyID" />
+            <PropertyRef Name="PBarCodeID" />
+            <PropertyRef Name="Mojodi" />
+          </Key>
+          <Property Name="ERPCode" Type="String" MaxLength="92" FixedLength="false" Unicode="false" />
+          <Property Name="BrandERPCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KArtNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KBarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="K_Name" Type="String" MaxLength="356" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="K_price_sail" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="K_price_sail2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="K_price_sail3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="EndUserPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="PcompanyID" Type="Int32" Nullable="false" />
+          <Property Name="PBarCodeID" Type="Int32" Nullable="false" />
+          <Property Name="vat" Type="Double" />
+          <Property Name="Mojodi" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ERFANEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProductPictures" EntityType="Self.ProductPicture" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PTC_MIS_DBModelStoreContainer" CdmEntityContainer="ERFANEntities">
+          <EntitySetMapping Name="ProductPictures">
+            <EntityTypeMapping TypeName="PTC_MIS_DBModel.ProductPicture">
+              <MappingFragment StoreEntitySet="ProductPictures">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ERPCode" ColumnName="ERPCode" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="PTC_MIS_DBModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ERPCode" ColumnName="ERPCode" />
+                <ScalarProperty Name="BrandERPCode" ColumnName="BrandERPCode" />
+                <ScalarProperty Name="KArtNo" ColumnName="KArtNo" />
+                <ScalarProperty Name="KBarCode" ColumnName="KBarCode" />
+                <ScalarProperty Name="K_Name" ColumnName="K_Name" />
+                <ScalarProperty Name="K_price_sail" ColumnName="K_price_sail" />
+                <ScalarProperty Name="K_price_sail2" ColumnName="K_price_sail2" />
+                <ScalarProperty Name="K_price_sail3" ColumnName="K_price_sail3" />
+                <ScalarProperty Name="EndUserPrice" ColumnName="EndUserPrice" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="PcompanyID" ColumnName="PcompanyID" />
+                <ScalarProperty Name="PBarCodeID" ColumnName="PBarCodeID" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="Mojodi" ColumnName="Mojodi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
